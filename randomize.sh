@@ -1,12 +1,11 @@
 #!/bin/bash
-# This script randomizes the name of every file under ./ to be a random hex string
 
-hexlength=8 # max length is 16
+hexlength=8 # Max length is 16
 IFS=$'\n' # Avoid interpreting the spaces in file names as a separator
 filepaths=($(find . -type f)) # An array containing paths to every file under ./
 unset IFS
 arrlength=${#filepaths[@]}
-echo "Randomizing the names of ${arrlength} files under ./ to be ${hexlength}-byte hex strings..."
+echo "Renaming ${arrlength} files under ./ to random ${hexlength}-byte hex strings..."
 
 percentage=0 # Percentage of files already renamed, increment only by 10
 for i in ${!filepaths[@]}; do # Iterate over the indexes of the array
@@ -24,4 +23,5 @@ for i in ${!filepaths[@]}; do # Iterate over the indexes of the array
 		echo "$percentage% completed..."
 	fi
 done
+
 echo "Randomization completed!"
